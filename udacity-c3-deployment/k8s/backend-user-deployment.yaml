@@ -1,10 +1,14 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
     service: backend-user
   name: backend-user
 spec:
+spec:
+  selector: 
+    matchLabels:
+      service: backend-user
   replicas: 2
   template:
     metadata:
@@ -12,7 +16,7 @@ spec:
         service: backend-user
     spec:
       containers:
-      - image: scheele/udacity-restapi-user
+      - image: dushca4ever/udacity-c3-restapi-user
         name: backend-user 
         imagePullPolicy: Always  
         resources:
